@@ -73,7 +73,7 @@ endfunction
 function! s:add_diff_icon(type) abort
   let l:difficon = g:spaceline_diff_icon[a:type]
   let l:diff_data = []
-  let l:diff_flags = ['+','\~','-'][a:type]
+  let l:diff_flags = ['+','-','\~'][a:type]
   if g:spaceline_diff == 'coc-git'
     let l:diff_data = split(get(b:, 'coc_git_status', ''),' ')
   elseif g:spaceline_diff == 'vim-signify'
@@ -83,7 +83,7 @@ function! s:add_diff_icon(type) abort
   end
   for item in l:diff_data
     if matchend(item,l:diff_flags) > 0
-      return substitute(item, l:diff_flags, l:difficon, '').' '
+      return substitute(item, l:diff_flags, l:difficon.' ', '').' '
     endif
   endfor
 endfunction
