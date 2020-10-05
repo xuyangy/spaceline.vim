@@ -21,10 +21,10 @@ function! spaceline#status#coc_status() abort
     endif
 
     if &filetype ==? 'python'
-      if empty($PYENV_ROOT)
+      "if empty($PYENV_ROOT)
         let l:python_status = substitute(l:status, "\\Python [0-9].[0-9].[0-9].[0-9][0-9]-bit", "ⓟ ", "")
         let l:statusbar= split(l:python_status)
-      end
+      "end
     endif
 
     if &filetype ==? "go"
