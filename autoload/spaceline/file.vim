@@ -24,13 +24,32 @@ endfunction
 function! s:line_column()
   let l:line = line('.')
   let l:column = col('.')
-  return ' '.l:line.':'.l:column.' | '
+  " padding line to the left
+  if len(l:line) >= 3
+		let padding_line = ''
+  else
+		let padding_line = repeat(' ', 3 - len(l:line))
+  endif
+  " padding column to the right
+  if len(l:column) >= 2
+		let padding_column = ''
+  else
+		let padding_column = repeat(' ', 2 - len(l:column))
+	endif
+  return ' '.padding_line.l:line.':'.l:column.padding_column.' |'
 endfunction
 
 function! s:line_percent()
   let byte = line2byte( line( "." ) ) + col( "." ) - 1
   let size = (line2byte( line( "$" ) + 1 ) - 1)
-  return (byte * 100) / size .'% '
+	let percent = ( byte * 100 ) / size
+  " padding percent to the left
+  if len(percent) >= 3
+	  let padding_percent = ''
+	else
+	  let padding_percent = repeat(' ', 3 - len(percent))
+	endif
+  return padding_percent.percent.'% '
 endfunction
 
 function! spaceline#file#file_size()abort
