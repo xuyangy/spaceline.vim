@@ -21,10 +21,11 @@ function! spaceline#status#coc_status() abort
     endif
 
     if &filetype ==? 'python'
-      "if empty($PYENV_ROOT)
-        let l:python_status = substitute(l:status, "\\Python [0-9].[0-9].[0-9].[0-9][0-9]-bit", "ⓟ ", "")
+      if ! empty($PYENV_ROOT)
+        let l:python_status = substitute(l:status, "\\Python \\([0-9].[0-9].[0-9]\\) \\([0-9][0-9]\\)-bit", " \\1 x\\2", "")
         let l:statusbar= split(l:python_status)
-      "end
+        "let l:statusbar= split(l:status)
+      end
     endif
 
     if &filetype ==? "go"
@@ -36,6 +37,6 @@ function! spaceline#status#coc_status() abort
     if empty(s)
         return ""
     endif
-    return join(['❖',s])
+    return join(['',s])
 endfunction
 
