@@ -23,7 +23,7 @@ let g:spaceline_diagnostic = get(g:,'spaceline_diagnostic_tool','coc')
 let g:spaceline_diff = get(g:,'spaceline_diff_tool','coc-git')
 
 let g:spaceline_errorsign = get(g:,'spaceline_diagnostic_errorsign', '❌ ')
-let g:spaceline_warnsign = get(g:,'spaceline_diagnostic_warnsign', '⚠️ ')
+let g:spaceline_warnsign = get(g:,'spaceline_diagnostic_warnsign', ' ')
 let g:spaceline_oksign = get(g:,'spaceline_diagnostic_oksign', '')
 
 let g:spaceline_branch_icon = get(g:,'spaceline_git_branch_icon',' ')
